@@ -68,7 +68,7 @@ def running( inputPath , outputPath ,imgType , overwrite):
     imgsArr = getImgs( inputPath , imgType )
     if len(imgsArr) < 1:
         print('cannot find image with '+imgType)
-        return False
+        return
     elif len(imgsArr) >= 1:
         temp = 0
         out = ''
