@@ -1,5 +1,9 @@
 # imgsCompress
     JPG and PNG compression script
+# OS
+    linux
+# python
+    you need to install Python3
 # how to use
     $ python ic.py /home/xx/xx
 # parameters
