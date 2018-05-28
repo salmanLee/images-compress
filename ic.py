@@ -10,11 +10,16 @@ import argparse
 # 全局
 IMGSLIST = []
 JPG = 'jpg'
+JPG2 = 'JPG'
+JPG3 = 'jpeg'
+JPG4 = 'JPEG'
 PNG = 'png'
+PNG2 = 'PNG'
 OVERWRITE = False
 
 #遍历filepath下所有文件，包括子目录返回图片路径list
 def getImgs(filepath , imgType):
+    typeFlag = False
     try:
         files = os.listdir(filepath)
     except Exception:
@@ -26,19 +31,23 @@ def getImgs(filepath , imgType):
             if os.path.isdir(file_dir):
                 getImgs(file_dir , imgType)
             else:
-                if file.endswith(imgType) :
+                if imgType == JPG:
+                    typeFlag = file.endswith(JPG) or file.endswith(JPG2) or file.endswith(JPG3) or file.endswith(JPG4)
+                elif imgType == PNG:
+                    typeFlag = file.endswith(PNG) or file.endswith(PNG2)
+                if typeFlag :
                     obj = dict(imgPath=os.path.join(filepath,file_dir), imgName=file)
                     IMGSLIST.append(obj)
         return IMGSLIST
 
 #根据传入图片格式进行PNG或者JPG格式图片的压缩处理
 def imgCompress( inputP, outputP ,imgType ):
-    if imgType == 'jpg':
+    if imgType == JPG:
         try:
             os.system('guetzli'+' '+inputP+' '+outputP)
         except Exception:
             print('compressing jpg error , error for the programmer ')
-    elif imgType == 'png':
+    elif imgType == PNG:
         try: 
             os.system('pngquant'+' '+'--force'+' '+'--output'+' '+outputP+' '+inputP)
         except Exception:
@@ -58,9 +67,9 @@ def running( inputPath , outputPath ,imgType , overwrite):
     elif os.path.exists(outputPath) == False:
         print('cannot find output path')
         return
-    if imgType == 'jpg' or imgType == 'JPG' or imgType == 'JPEG' or imgType == 'jpeg' :
+    if imgType == JPG or imgType == JPG2 or imgType == JPG3 or imgType == JPG4 :
         imgType = JPG
-    elif imgType == 'png' or imgType == 'PNG':
+    elif imgType == PNG or imgType == PNG2:
         imgType = PNG
     else:
         print('imgType only can input jpg or png')
