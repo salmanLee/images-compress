@@ -1,5 +1,5 @@
 # imgsCompress
-    JPG &amp; PNG compression script
+    JPG and PNG compression script
 # how to use
     $ python ic.py /home/xx/xx
 # parameters
