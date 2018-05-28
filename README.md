@@ -1,7 +1,7 @@
 # imgsCompress
     JPG and PNG compression script
 # OS
-    linux
+    linux. I had no test ohters. You can try and tell me.
 # python
     you need to install Python3
 # how to use
