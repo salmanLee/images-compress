@@ -1,4 +1,4 @@
-# imgsCompress
+# images-compress
     JPG and PNG compression script
 # OS
     linux. I had no test ohters. You can try and tell me.
