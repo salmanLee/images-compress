@@ -7,7 +7,7 @@ import argparse
 # author: Salman Lee
 # date: 2018.05.28
  
-# 全局
+# global
 IMGSLIST = []
 JPG = 'jpg'
 JPG2 = 'JPG'
@@ -17,7 +17,7 @@ PNG = 'png'
 PNG2 = 'PNG'
 OVERWRITE = False
 
-#遍历filepath下所有文件，包括子目录返回图片路径list
+# foreach all files in filepath
 def getImgs(filepath , imgType):
     typeFlag = False
     try:
@@ -40,7 +40,7 @@ def getImgs(filepath , imgType):
                     IMGSLIST.append(obj)
         return IMGSLIST
 
-#根据传入图片格式进行PNG或者JPG格式图片的压缩处理
+#compressing
 def imgCompress( inputP, outputP ,imgType ):
     if imgType == JPG:
         try:
@@ -53,7 +53,7 @@ def imgCompress( inputP, outputP ,imgType ):
         except Exception:
             print('compressing png error , error for the programmer ')
 
-#运行压缩脚本
+#run script
 def running( inputPath , outputPath ,imgType , overwrite):
     imgsArr = []
     if os.path.exists(inputPath) == False:
@@ -73,7 +73,7 @@ def running( inputPath , outputPath ,imgType , overwrite):
         imgType = PNG
     else:
         print('imgType only can input jpg or png')
-    #调用获取图片方法
+    #get func
     imgsArr = getImgs( inputPath , imgType )
     if len(imgsArr) < 1:
         print('cannot find image with '+imgType)
@@ -89,7 +89,7 @@ def running( inputPath , outputPath ,imgType , overwrite):
             print('Compressing...')
             print('input:',obj['imgPath'])
             print('output:',out)
-            #调用图片压缩方法
+            #get func
             imgCompress( obj['imgPath'] , out , imgType )
             temp += 1
             if temp == len(imgsArr):
@@ -97,7 +97,7 @@ def running( inputPath , outputPath ,imgType , overwrite):
             else:
                 print('('+str(temp)+'/'+str(len(imgsArr))+') is done!')
 
-# 入口
+# index
 parser = argparse.ArgumentParser(description=
 'JPG & PNG compression script.'+'\n# required parameter: inputPath;'+
 '\n# optional parameter: outputPath ( If you donnot write output path, or output path is the same as input path, the output images overrides the original images );'+
