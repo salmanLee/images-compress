@@ -1,9 +1,18 @@
 # images-compress
     JPG and PNG compression script
 # OS
-    linux. I had no test ohters. You can try and tell me.
+    linux/macOS/windows. I had no test ohters. You can try and tell me.
 # python
     you need to install Python3
+# pngquant
+    you need to install pngquant for .png
+    build:
+    npm install pngquant
+# guetzli
+    you need to install quetzli for .jpg
+    build:
+    https://github.com/google/guetzli/edit/master/README.md
+
 # how to use
     $ python ic.py /home/xx/xx
 # parameters
