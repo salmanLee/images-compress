@@ -36,7 +36,7 @@ def getImgs(filepath , imgType):
                 elif imgType == PNG:
                     typeFlag = file.endswith(PNG) or file.endswith(PNG2)
                 if typeFlag :
-                    obj = dict(imgPath=os.path.join(filepath,file_dir), imgName=file)
+                    obj = dict(imgPath=file_dir, imgName=file)
                     IMGSLIST.append(obj)
         return IMGSLIST
 
